@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from '../styles/homeScreenStyles';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type DrawerParamList = {
   Home: undefined;
@@ -69,7 +70,10 @@ const HomeScreen = () => {
       {/* 공지 및 D+DAY 영역 */}
       <View style={styles.noticeContainer}>
         <TouchableOpacity style={styles.noticeButton}>
-          <Text>{study?.notice || '공지 없음'}</Text>
+          <View style={styles.noticeContent}>
+            <Icon name="bullhorn" size={25} color="#FF1216" style={styles.noticeIcon} />
+            <Text style={styles.noticeText}>{study?.notice || '공지 없음'}</Text>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.dDayButton}>
           <Text>{study?.dDay || 'D+DAY 없음'}</Text>

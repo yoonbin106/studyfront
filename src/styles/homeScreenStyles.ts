@@ -10,8 +10,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor: '#ffffff',
+    marginBottom: 10,
+    backgroundColor: '#fff',
+    elevation: 3,
     paddingHorizontal: 10,
     paddingVertical: 15,
     borderRadius: 10,
@@ -22,8 +23,8 @@ export const styles = StyleSheet.create({
     padding: 5,
   },
   icon: {
-    width: 24,
-    height: 24,
+    width: 30,
+    height: 30,
   },
   profileButton: {
     padding: 10,
@@ -39,15 +40,28 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   noticeContainer: {
-    marginBottom: 20,
-    
+    paddingVertical: 2, 
+    paddingHorizontal: 5, 
+    marginBottom: 8, 
+  },
+  noticeContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  noticeIcon: {
+    marginRight: 8,
   },
   noticeButton: {
-    padding: 15,
+    padding: 10,
     backgroundColor: '#ffffff',
     borderRadius: 10,
     marginBottom: 10,
     
+  },
+  noticeText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000',
   },
   dDayButton: {
     padding: 15,
@@ -62,6 +76,8 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     padding: 20,
+    borderColor : '#B7E5B7',
+    borderWidth: 1,
     
   },
   calendarTitle: {
