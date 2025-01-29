@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios';
 import { styles } from '../styles/homeScreenStyles';
 
@@ -40,14 +40,21 @@ const HomeScreen = () => {
     <View style={styles.container}>
       {/* 상단 헤더 */}
       <View style={styles.header}>
+        {/*햄버거 버튼 */}
         <TouchableOpacity style={styles.menuButton}>
-          <Text>버거 메뉴바</Text>
+          <Image source={require('../assets/hamburger-icon.png')} //햄버거 버튼 아이콘
+          style={styles.icon}
+          />
         </TouchableOpacity>
-        <Text style={styles.title}>{study?.name || '스터디 이름'}</Text>
-        <TouchableOpacity style={styles.profileButton}>
-          <Text>어플 로그</Text>
-        </TouchableOpacity>
-      </View>
+        
+        {/*사용자 닉네임*/}
+        <Text style={styles.title}>{study?.name || '사용자 닉네임'}</Text>
+        
+        {/*어플 로고*/}
+          <Image source={require('../assets/app-logo.png')} //어플로고
+          style={styles.logo}
+          />
+        </View>
 
       {/* 공지 및 D+DAY 영역 */}
       <View style={styles.noticeContainer}>

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#FCFAF1',
     padding: 20,
   },
   header: {
@@ -11,16 +11,28 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 20,
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    borderRadius: 10,
+    borderColor : '#000000',
+    borderWidth: 1,
   },
   menuButton: {
-    padding: 10,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
+    padding: 5,
+  },
+  icon: {
+    width: 24,
+    height: 24,
   },
   profileButton: {
     padding: 10,
     backgroundColor: '#ddd',
     borderRadius: 5,
+  },
+  logo: {
+    width: 50,
+    height: 50,
   },
   title: {
     fontSize: 20,
@@ -28,16 +40,18 @@ export const styles = StyleSheet.create({
   },
   noticeContainer: {
     marginBottom: 20,
+    
   },
   noticeButton: {
     padding: 15,
-    backgroundColor: '#ffe4b5',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     marginBottom: 10,
+    
   },
   dDayButton: {
     padding: 15,
-    backgroundColor: '#b0e0e6',
+    backgroundColor: '#B7E5B7',
     borderRadius: 10,
   },
   calendarContainer: {
@@ -48,6 +62,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     padding: 20,
+    
   },
   calendarTitle: {
     fontSize: 18,
@@ -62,7 +77,7 @@ export const styles = StyleSheet.create({
   footerButton: {
     width: '45%',
     padding: 15,
-    backgroundColor: '#87cefa',
+    backgroundColor: '#B7E5B7',
     borderRadius: 10,
     alignItems: 'center',
     marginBottom: 10,

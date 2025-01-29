@@ -13,7 +13,7 @@ const App = () => {
         <Stack.Screen 
           name="Home" 
           component={HomeScreen} 
-          options={{ title: '홈 화면' }} // 헤더에 '홈 화면' 표시
+          options={{ headerShown:false }} // 헤더에 '홈 화면' 표시
         />
       </Stack.Navigator>
     </NavigationContainer>
