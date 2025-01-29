@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from '../styles/homeScreenStyles';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+
+type DrawerParamList = {
+  Home: undefined;
+  Profile: undefined;
+  Settings: undefined;
+};
 
 interface StudyData {
   name: string;
@@ -12,6 +20,7 @@ interface StudyData {
 const HomeScreen = () => {
   const [study, setStudy] = useState<StudyData | null>(null); // API 데이터 저장
   const [error, setError] = useState<string | null>(null); // 에러 상태 관리
+  const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>(); // 타입 지정
 
   // 데이터 가져오기
   useEffect(() => {
@@ -40,10 +49,11 @@ const HomeScreen = () => {
     <View style={styles.container}>
       {/* 상단 헤더 */}
       <View style={styles.header}>
-        {/*햄버거 버튼 */}
-        <TouchableOpacity style={styles.menuButton}>
-          <Image source={require('../assets/hamburger-icon.png')} //햄버거 버튼 아이콘
-          style={styles.icon}
+        {/* 햄버거 버튼 */}
+        <TouchableOpacity style={styles.menuButton} onPress={() => navigation.openDrawer()}>
+          <Image 
+            source={require('../assets/hamburger-icon.png')}
+            style={styles.icon} 
           />
         </TouchableOpacity>
         

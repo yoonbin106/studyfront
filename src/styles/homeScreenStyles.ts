@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FCFAF1',
+    backgroundColor: '#Ffffff',
     padding: 20,
   },
   header: {
@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
   },
   dDayButton: {
     padding: 15,
-    backgroundColor: '#B7E5B7',
+    backgroundColor: '#F2F0E7',
     borderRadius: 10,
   },
   calendarContainer: {
@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
   footerButton: {
     width: '45%',
     padding: 15,
-    backgroundColor: '#B7E5B7',
+    backgroundColor: '#F2F0E7',
     borderRadius: 10,
     alignItems: 'center',
     marginBottom: 10,
