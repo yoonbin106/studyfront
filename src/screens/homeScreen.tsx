@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from '../styles/homeScreenStyles';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+type DrawerParamList = {
+  Home: undefined;
+  Profile: undefined;
+  Settings: undefined;
+};
 
 interface StudyData {
   name: string;
@@ -12,6 +21,7 @@ interface StudyData {
 const HomeScreen = () => {
   const [study, setStudy] = useState<StudyData | null>(null); // API 데이터 저장
   const [error, setError] = useState<string | null>(null); // 에러 상태 관리
+  const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>(); // 타입 지정
 
   // 데이터 가져오기
   useEffect(() => {
@@ -40,19 +50,30 @@ const HomeScreen = () => {
     <View style={styles.container}>
       {/* 상단 헤더 */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.menuButton}>
-          <Text>버거 메뉴바</Text>
+        {/* 햄버거 버튼 */}
+        <TouchableOpacity style={styles.menuButton} onPress={() => navigation.openDrawer()}>
+          <Image 
+            source={require('../assets/hamburger-icon.png')}
+            style={styles.icon} 
+          />
         </TouchableOpacity>
-        <Text style={styles.title}>{study?.name || '스터디 이름'}</Text>
-        <TouchableOpacity style={styles.profileButton}>
-          <Text>어플 로그</Text>
-        </TouchableOpacity>
-      </View>
+        
+        {/*사용자 닉네임*/}
+        <Text style={styles.title}>{study?.name || '사용자 닉네임'}</Text>
+        
+        {/*어플 로고*/}
+          <Image source={require('../assets/app-logo.png')} //어플로고
+          style={styles.logo}
+          />
+        </View>
 
       {/* 공지 및 D+DAY 영역 */}
       <View style={styles.noticeContainer}>
         <TouchableOpacity style={styles.noticeButton}>
-          <Text>{study?.notice || '공지 없음'}</Text>
+          <View style={styles.noticeContent}>
+            <Icon name="bullhorn" size={25} color="#FF1216" style={styles.noticeIcon} />
+            <Text style={styles.noticeText}>{study?.notice || '공지 없음'}</Text>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.dDayButton}>
           <Text>{study?.dDay || 'D+DAY 없음'}</Text>

@@ -117,3 +117,5 @@ dependencies {
         implementation jscFlavor
     }
 }
+// Add this line to include react-native-vector-icons fonts
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

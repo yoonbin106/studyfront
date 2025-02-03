@@ -3,41 +3,69 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#Ffffff',
     padding: 20,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
+    backgroundColor: '#fff',
+    elevation: 3,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    borderRadius: 10,
+    borderColor : '#000000',
+    borderWidth: 1,
   },
   menuButton: {
-    padding: 10,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
+    padding: 5,
+  },
+  icon: {
+    width: 30,
+    height: 30,
   },
   profileButton: {
     padding: 10,
     backgroundColor: '#ddd',
     borderRadius: 5,
   },
+  logo: {
+    width: 50,
+    height: 50,
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
   },
   noticeContainer: {
-    marginBottom: 20,
+    paddingVertical: 2, 
+    paddingHorizontal: 5, 
+    marginBottom: 8, 
+  },
+  noticeContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  noticeIcon: {
+    marginRight: 8,
   },
   noticeButton: {
-    padding: 15,
-    backgroundColor: '#ffe4b5',
+    padding: 10,
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     marginBottom: 10,
+    
+  },
+  noticeText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000',
   },
   dDayButton: {
     padding: 15,
-    backgroundColor: '#b0e0e6',
+    backgroundColor: '#F2F0E7',
     borderRadius: 10,
   },
   calendarContainer: {
@@ -48,6 +76,9 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     padding: 20,
+    borderColor : '#B7E5B7',
+    borderWidth: 1,
+    
   },
   calendarTitle: {
     fontSize: 18,
@@ -62,7 +93,7 @@ export const styles = StyleSheet.create({
   footerButton: {
     width: '45%',
     padding: 15,
-    backgroundColor: '#87cefa',
+    backgroundColor: '#F2F0E7',
     borderRadius: 10,
     alignItems: 'center',
     marginBottom: 10,
