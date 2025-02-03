@@ -4,7 +4,7 @@ import { styles } from '../styles/loginScreenStyles'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 type RootStackParamList = {
-  Home: undefined;
+  Main: undefined; // DrawerNavigator 전체를 가리킴
   SignUp: undefined;
 };
 
@@ -23,7 +23,7 @@ const LoginScreen = () => {
   // 로그인 처리 
   const handleLogin = () =>{
     console.log('로그인 시도: ', nickname, password);
-    navigation.navigate('Home');
+    navigation.navigate('Main');
   };
 
   return <>
