@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from '../styles/loginScreenStyles'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type RootStackParamList = {
-  Main: undefined; // DrawerNavigator 전체를 가리킴
+  Home: undefined;
   SignUp: undefined;
 };
 
 
-const LoginScreen = () => {
+const LoginScreen = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
 
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-
-  //const [nickname, setNickname] = useState('');
-  //const [password, setPassword] = useState('');
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   //하드코딩
   const nickname = 'aaa';
@@ -23,7 +21,9 @@ const LoginScreen = () => {
   // 로그인 처리 
   const handleLogin = () =>{
     console.log('로그인 시도: ', nickname, password);
-    navigation.navigate('Main');
+    setLogin(true); // 로그인 상태 변경
+
+    navigation.replace('Home');
   };
 
   return <>

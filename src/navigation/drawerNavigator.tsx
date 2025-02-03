@@ -61,10 +61,12 @@ const CustomDrawerContent = ({ navigation }: DrawerContentComponentProps) => {
 };
 
 // 로그인, 회원가입
-const AuthStack = () => {
+const AuthStack = ({setLogin}: { setLogin: (value: boolean) => void }) => {
   return (
     <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Login">
+        {(props) => <LoginScreen {...props} setLogin={setLogin} />}
+      </Stack.Screen>
       <Stack.Screen name="SignUp" component={SignUpScreen} />
     </Stack.Navigator>
   );
@@ -72,7 +74,6 @@ const AuthStack = () => {
 
 // 메인 Drawer 네비게이터
 const DrawerNavigator = () => {
-
   const [login, setLogin] = useState(false); // 로그인 상태
 
   return (
@@ -90,8 +91,10 @@ const DrawerNavigator = () => {
           <Drawer.Screen name="Settings" component={SettingsScreen} />
         </>
       ) : (
-        // 로그인 상태가 아니면 로그인 화면, 회원가입 화면을 StackNavigator로 감싸기
-        <Drawer.Screen name="Auth" component={AuthStack} />
+        // 로그인 상태가 아니면 로그인 및 회원가입 화면 먼저 보이기
+        <Drawer.Screen name="Auth">
+          {()=> <AuthStack setLogin={setLogin} />}
+        </Drawer.Screen>
       )}
     </Drawer.Navigator>
   );
