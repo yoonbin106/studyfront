@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import { styles } from '../styles/signupScreenStyles';
+import { styles } from '../styles/signUpScreenStyles';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({ navigation }: { navigation: any }) => {
 
   const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +16,7 @@ const SignUpScreen = () => {
       return;
     }
     console.log('회원가입 시도: ', nickname, password);
+    navigation.replace('Login');
   };
 
   return <>
@@ -49,10 +50,6 @@ const SignUpScreen = () => {
 
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>회원가입</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.link}>로그인</Text>
       </TouchableOpacity>
 
     </View>

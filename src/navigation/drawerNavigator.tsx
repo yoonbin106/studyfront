@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { drawerStyles } from '../styles/drawerStyles';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { drawerStyles } from '../styles/drawerStyles'; // 스타일 가져오기
+import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import HomeScreen from '../screens/homeScreen';
 import ProfileScreen from '../screens/profileScreen';
 import SettingsScreen from '../screens/settingsScreen';
-import { DrawerContentComponentProps } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../screens/loginScreen';
 import SignUpScreen from '../screens/signupScreen';
-import { createStackNavigator } from '@react-navigation/stack';
-
-
 
 // 네비게이터 타입 정의
 type DrawerParamList = {
@@ -29,7 +27,7 @@ type StackParamList = {
 const Drawer = createDrawerNavigator<DrawerParamList>();
 const Stack = createStackNavigator<StackParamList>();
 
-const CustomDrawerContent = ({ navigation }: DrawerContentComponentProps) => {
+const CustomDrawerContent = ({ navigation, setLogin }: DrawerContentComponentProps & { setLogin: (value: boolean) => void }) => {
   return (
     <View style={drawerStyles.drawerContainer}>
       <TouchableOpacity
@@ -56,6 +54,24 @@ const CustomDrawerContent = ({ navigation }: DrawerContentComponentProps) => {
           Settings
         </Text>
       </TouchableOpacity>
+
+       {/* 로그아웃 */}
+       <TouchableOpacity
+        style={drawerStyles.drawerItem}
+        onPress={() => {
+          setLogin(false); // 로그아웃 후 상태 변경
+          navigation.closeDrawer(); // 메뉴바 닫기
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Auth' }],
+          });
+        }}
+      >
+        <Text style={[drawerStyles.drawerLabel, drawerStyles.drawerItemInactive]}>
+          Logout
+        </Text>
+      </TouchableOpacity>
+
     </View>
   );
 };
@@ -65,7 +81,7 @@ const AuthStack = ({setLogin}: { setLogin: (value: boolean) => void }) => {
   return (
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="Login">
-        {(props) => <LoginScreen {...props} setLogin={setLogin} />}
+        {(props) => <LoginScreen {...props} setLogin={setLogin} navigation={props.navigation} />}
       </Stack.Screen>
       <Stack.Screen name="SignUp" component={SignUpScreen} />
     </Stack.Navigator>
@@ -81,7 +97,7 @@ const DrawerNavigator = () => {
       screenOptions={{
         headerShown: false, // 헤더 숨기기
       }}
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      drawerContent={(props) => <CustomDrawerContent {...props} setLogin={setLogin}/>}
     >
       {/* 로그인 상태가 true일 때만 DrawerNavigator에 포함 */}
       {login ? (

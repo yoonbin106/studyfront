@@ -1,18 +1,9 @@
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from '../styles/loginScreenStyles'
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-
-type RootStackParamList = {
-  Home: undefined;
-  SignUp: undefined;
-};
 
 
-const LoginScreen = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
-
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+const LoginScreen = ({ setLogin, navigation }: { setLogin: (value: boolean) => void, navigation: any }) => {
 
   //하드코딩
   const nickname = 'aaa';
@@ -22,8 +13,7 @@ const LoginScreen = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
   const handleLogin = () =>{
     console.log('로그인 시도: ', nickname, password);
     setLogin(true); // 로그인 상태 변경
-
-    navigation.replace('Home');
+    navigation.replace('Home'); // 로그인 완료 시, 홈 화면으로 이동
   };
 
   return <>
@@ -51,7 +41,7 @@ const LoginScreen = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
         <Text style={styles.buttonText}>로그인</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('SignUp')}>
+      <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}>
         <Text style={styles.link}>회원가입</Text>
       </TouchableOpacity>
 

@@ -26,18 +26,23 @@ export const styles = StyleSheet.create({
   },
   button: {
     padding: 15,
-    backgroundColor: '#F2F0E7',
+    margin: 3,
+    borderColor: '#228B22', 
+    borderWidth: 2,
+    backgroundColor: '#228B22',
     borderRadius: 10,
     alignItems: 'center',
   },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#FFFFFF',
   },
   link: {
     marginTop: 10,
     textAlign: 'center',
-    color: '#007BFF',
+    color: '#228B22',
+    backgroundColor: '#FFFFFF',
+    textDecorationLine: 'underline'
   },
 });
