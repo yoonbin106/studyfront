@@ -12,14 +12,14 @@ type DrawerParamList = {
 
 const StudyCreateScreen = () => {
   const [studyName, setStudyName] = useState('');
-  const [maxMembers, setMaxMembers] = useState('');
+  const [studyPassword, setStudyPassword] = useState('');
   const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>새로운 스터디 생성</Text>
 
-      {/* 스터디명 입력 */}
+      {/* 스터디명 필수 */}
       <Text style={styles.label}>스터디명</Text>
       <TextInput
         style={styles.input}
@@ -27,14 +27,13 @@ const StudyCreateScreen = () => {
         value={studyName}
         onChangeText={setStudyName}
       />
-
-      {/* 최대 인원수 입력 */}
-      <Text style={styles.label}>최대 인원수</Text>
+      {/* 스터디 비밀번호 필수 X */}
+      <Text style={styles.label}>스터디 비밀번호를 입력하세요</Text>
       <TextInput
         style={styles.input}
-        placeholder="최대 인원수를 입력하세요"
-        value={maxMembers}
-        onChangeText={setMaxMembers}
+        placeholder="비밀번호를 입력하세요"
+        value={studyPassword}
+        onChangeText={setStudyPassword}
         keyboardType="numeric"
       />
 
@@ -43,12 +42,12 @@ const StudyCreateScreen = () => {
         <TouchableOpacity
           style={styles.createButton}
           onPress={() => {
-            if (studyName.trim() === '' || maxMembers.trim() === '') {
+            if (studyName.trim() === '' || studyPassword.trim() === '') {
               alert('스터디명과 최대 인원수를 입력해주세요.');
               return;
             }
-            alert(`스터디 "${studyName}"(${maxMembers}명)를 생성했습니다.`);
-            navigation.navigate('StudyScreen');
+            alert(`스터디 "${studyName}" 생성 완료!`);
+            navigation.navigate('Home');
           }}
         >
           <Text style={styles.buttonText}>스터디 생성</Text>
