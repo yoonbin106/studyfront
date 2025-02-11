@@ -45,4 +45,17 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     textDecorationLine: 'underline'
   },
+  auto: {
+    flexDirection: 'row',
+    alignItems: 'center', 
+    marginBottom: 10,
+    paddingHorizontal: 5, 
+  },
+  autoText: {
+    fontSize: 14,
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    color: '#333',
+    marginLeft: 0,
+  },
 });
