@@ -1,4 +1,4 @@
-// src/navigation/DrawerNavigator.tsx
+// src/navigation/drawerNavigator.tsx
 import React, { useEffect, useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -14,19 +14,13 @@ const Drawer = createDrawerNavigator();
 // 메인 Drawer 네비게이터
 const DrawerNavigator = () => {
   const [login, setLogin] = useState(false);
-  const [autoLogin, setAutoLogin] = useState(false);
 
   useEffect(() => {
-    // 앱 시작 시 저장된 로그인 상태와 체크박스 상태 복원
+    // 앱 시작 시 저장된 로그인 상태
     const checkLoginStatus = async () => {
       const storedLoginStatus = await AsyncStorage.getItem('isLoggedIn');
-      const storedAutoLoginStatus = await AsyncStorage.getItem('autoLogin');
-      
       if (storedLoginStatus === 'true') {
         setLogin(true);
-      }
-      if (storedAutoLoginStatus === 'true') {
-        setAutoLogin(true);
       }
     };
 
@@ -48,8 +42,6 @@ const DrawerNavigator = () => {
         {...props}
         setLogin={setLogin}
         login={login}
-        setAutoLogin={setAutoLogin}
-        autoLogin={autoLogin}
       />
       )}
     >

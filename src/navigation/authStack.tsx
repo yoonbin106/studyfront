@@ -1,12 +1,15 @@
-// src/navigation/AuthStack.tsx
+// src/navigation/authStack.tsx
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/loginScreen';
 import SignUpScreen from '../screens/signupScreen';
 
-type StackParamList = {
+export type StackParamList = {
     Login: undefined;
     SignUp: undefined;
+    Home: undefined;
+    Profile: undefined;
+    Settings: undefined;
 };
 
 const Stack = createStackNavigator<StackParamList>();
@@ -15,7 +18,7 @@ const AuthStack = ({ setLogin } : { setLogin: (value: boolean)=> void }) => {
   return (
     <Stack.Navigator initialRouteName="Login">
     <Stack.Screen name="Login">
-      {(props) => <LoginScreen {...props} setLogin={setLogin} navigation={props.navigation} />}
+      {(props) => <LoginScreen {...props} setLogin={setLogin} />}
     </Stack.Screen>
     <Stack.Screen name="SignUp" component={SignUpScreen} />
   </Stack.Navigator>

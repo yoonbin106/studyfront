@@ -1,4 +1,4 @@
-// src/navigation/CustomDrawerContent.tsx
+// src/navigation/customDrawerContent.tsx
 import React from 'react';
 import { DrawerContentComponentProps } from "@react-navigation/drawer/lib/typescript/commonjs/src";
 import { Text, TouchableOpacity, View } from "react-native";
@@ -8,22 +8,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 type CustomDrawerContentProps = {
     setLogin:(value: boolean) => void;
     login: boolean;
-    setAutoLogin: (value: boolean) => void;
-    autoLogin: boolean;
 } & DrawerContentComponentProps;
 
-const CustomDrawerContent = ({
-    navigation,
-    setLogin,
-    login,
-    setAutoLogin,
-    autoLogin
-  }: DrawerContentComponentProps & { 
-    setLogin: (value: boolean) => void; 
-    login: boolean;
-    setAutoLogin: (value: boolean) => void;
-    autoLogin: boolean;
-  }) => {
+const CustomDrawerContent = ({ navigation, setLogin, login }: CustomDrawerContentProps) => {
   return (
     <View style={drawerStyles.drawerContainer}>
       <TouchableOpacity
@@ -57,7 +44,8 @@ const CustomDrawerContent = ({
         onPress={() => {
           setLogin(false);
           AsyncStorage.removeItem('isLoggedIn');
-          AsyncStorage.setItem('autoLogin', JSON.stringify(autoLogin)); 
+          AsyncStorage.removeItem('refresh_token');
+
           navigation.closeDrawer();
           navigation.reset({
             index: 0,
