@@ -1,5 +1,7 @@
 # Download Module
 npm install --save-dev metro-react-native-babel-preset
+npm install react-native-elements
+npm install @react-native-async-storage/async-storage
 
 
 
