@@ -10,6 +10,7 @@ import ProfileScreen from '../screens/profileScreen';
 import SettingsScreen from '../screens/settingsScreen';
 import LoginScreen from '../screens/loginScreen';
 import SignUpScreen from '../screens/signupScreen';
+import StudyCreateScreen from '../screens/studyCreateScreen';
 
 // 네비게이터 타입 정의
 type DrawerParamList = {
@@ -17,6 +18,7 @@ type DrawerParamList = {
   Profile: undefined;
   Settings: undefined;
   Auth: undefined;
+  StudyCreate: undefined;
 };
 
 type StackParamList = {
@@ -105,6 +107,7 @@ const DrawerNavigator = () => {
           <Drawer.Screen name="Home" component={HomeScreen} />
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="Settings" component={SettingsScreen} />
+          <Drawer.Screen name="StudyCreate" component={StudyCreateScreen} />
         </>
       ) : (
         // 로그인 상태가 아니면 로그인 및 회원가입 화면 먼저 보이기

@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from '../styles/homeScreenStyles';
+import StudyCreateModal from '../modal/studyCreateModal';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -10,6 +11,7 @@ type DrawerParamList = {
   Home: undefined;
   Profile: undefined;
   Settings: undefined;
+  StudyCreate: undefined;
 };
 
 interface StudyData {
@@ -21,6 +23,7 @@ interface StudyData {
 const HomeScreen = () => {
   const [study, setStudy] = useState<StudyData | null>(null); // API 데이터 저장
   const [error, setError] = useState<string | null>(null); // 에러 상태 관리
+  const [modalVisible, setModalVisible] = useState(false); //스터디 생성 모달 관리
   const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>(); // 타입 지정
 
   // 데이터 가져오기
@@ -91,7 +94,7 @@ const HomeScreen = () => {
         <TouchableOpacity style={styles.footerButton}>
           <Text>채팅</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.footerButton}>
+        <TouchableOpacity style={styles.footerButton} onPress={() => setModalVisible(true)}>
           <Text>새로운 스터디 생성</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
@@ -101,6 +104,15 @@ const HomeScreen = () => {
           <Text>공부 시작 버튼</Text>
         </TouchableOpacity>
       </View>
+      {/* 스터디 생성 모달 */}
+      <StudyCreateModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onConfirm={() => {
+          setModalVisible(false);
+          navigation.navigate('StudyCreate');
+        }}
+      />
     </View>
   );
 };
