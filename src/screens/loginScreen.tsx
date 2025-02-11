@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from '../styles/loginScreenStyles'
+import { RouteProp, useRoute } from '@react-navigation/native';
 
+// 네비게이션에서 받을 데이터의 타입 지정
+type RootStackParamList = {
+  Login: { nickname?: string; password?: string };
+};
 
 const LoginScreen = ({ setLogin, navigation }: { setLogin: (value: boolean) => void, navigation: any }) => {
 
-  //하드코딩
-  const nickname = 'aaa';
-  const password = '1234';
+  const route =  useRoute<RouteProp<RootStackParamList, 'Login'>>();
+  const [nickname, setNickname] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(()=>{
+    if(route.params){
+      setNickname(route.params.nickname || '');
+      setPassword(route.params.password || '');
+    }
+  }, [route.params]);
+
 
   // 로그인 처리 
   const handleLogin = () =>{
