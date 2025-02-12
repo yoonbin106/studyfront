@@ -34,6 +34,11 @@ const LoginScreen = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
   // 로그인 처리 함수
   const handleLogin = async () => {
     console.log('로그인 시도: ', nickname, password);
+    
+    if (nickname.trim() === '' || password.trim() === '') {
+      alert('닉네임과 비밀번호를 입력해주세요.');
+      return;
+    }
   
     try {
       const userAgent = navigator.userAgent; 
@@ -58,14 +63,11 @@ const LoginScreen = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
     await AsyncStorage.setItem('refresh_token', refresh_token);
   
     setLogin(true);
-  
-    console.log('로그인 성공');
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Home' }],
-    });
+    alert(`로그인 성공`);
+    navigation.navigate('Home');
+
   } catch (err) {
-      console.error('로그인 실패:', err);
+      alert(`로그인 실패: ${err}`);
   }
 };
   
