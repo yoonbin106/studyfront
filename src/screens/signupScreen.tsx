@@ -17,7 +17,7 @@ const SignUpScreen = ({ navigation }: { navigation: any }) => {
       return;
     }
     try{
-      const response=await axios.post('http://192.168.45.237:3000/user',{
+      const response=await axios.post('http://10.0.2.2:3000/user',{  // 에뮬레이터 IP로 수정
         nickname: nickname,
         password: password
       });

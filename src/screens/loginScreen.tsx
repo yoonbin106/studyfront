@@ -38,8 +38,8 @@ const LoginScreen = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
     try {
       const userAgent = navigator.userAgent; 
   
-      // 서버에 로그인 요청 보내기
-      const response = await axios.post('http://192.168.45.237:3000/user/login', {
+      // 서버에 로그인 요청 보내기 - 에뮬레이터 IP로 수정
+      const response = await axios.post('http://10.0.2.2:3000/user/login', {
         nickname,
         password,
         userAgent

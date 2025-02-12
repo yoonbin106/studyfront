@@ -19,8 +19,8 @@ const StudyCreateScreen = () => {
     <View style={styles.container}>
       <Text style={styles.title}>새로운 스터디 생성</Text>
 
-      {/* 스터디명 필수 */}
-      <Text style={styles.label}>스터디명</Text>
+      {/* 스터디 이름 필수 */}
+      <Text style={styles.label}>스터디 이름</Text>
       <TextInput
         style={styles.input}
         placeholder="스터디명을 입력하세요"
