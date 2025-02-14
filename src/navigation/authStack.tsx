@@ -3,6 +3,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/loginScreen';
 import SignUpScreen from '../screens/signupScreen';
+import HomeScreen from '../screens/homeScreen';
 
 export type StackParamList = {
     Login: undefined;
@@ -21,6 +22,7 @@ const AuthStack = ({ setLogin } : { setLogin: (value: boolean)=> void }) => {
       {(props) => <LoginScreen {...props} setLogin={setLogin} />}
     </Stack.Screen>
     <Stack.Screen name="SignUp" component={SignUpScreen} />
+    <Stack.Screen name="Home" component={HomeScreen} />
   </Stack.Navigator>
   );
 };
